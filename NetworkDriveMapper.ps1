@@ -19,9 +19,9 @@ $isDone = $false;
 while (!$isDone)
 {
 	echo 'Enter the number corresponding to the drive you want to map and press "Enter"'
-	echo '0. INSERT DRIVE NAME HERE'
 	echo '1. INSERT DRIVE NAME HERE'
 	echo '2. INSERT DRIVE NAME HERE'
+	echo '3. INSERT DRIVE NAME HERE'
 	$Printer = Read-Host -Prompt 'Number'
 	<# 
 	Exception handling still need to be implemented
@@ -30,9 +30,9 @@ while (!$isDone)
 	#>
 		switch ($Printer)
 		{
-			0 { New-PSDrive -name "Z" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
-			1 { New-PSDrive -name "Y" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
-			2 { New-PSDrive -name "X" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
+			1 { New-PSDrive -name "Z" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
+			2 { New-PSDrive -name "Y" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
+			3 { New-PSDrive -name "X" -PSProvider FileSystem -Root "\\SERVER\share" -Persist -Scope "Global" -Credential $credential; break}
 			default {"Invalid number"; break}
 		}
 
@@ -46,16 +46,16 @@ while (!$isDone)
 	}
 	#>
 	
-	echo 'Would you like to map another drive? Enter the corresponding number and press "Enter"'
-	echo '0. Yes'
-	echo '1. No'
+	echo 'Would you like to map another drive? Enter the corresponding letter and press "Enter"'
+	echo 'Enter "y" for "Yes"'
+	echo 'Enter "n" for "No"'
 	
-	$Continue = Read-Host -Prompt 'Number'
+	$Continue = Read-Host -Prompt 'Letter'
 	
 	switch ($Continue)
 	{
-		0 {break}   
-		1 {$isDone = $true; break}
+		y {break}   
+		n {$isDone = $true; break}
 		default {$isDone = $true; break}
 	}
 }
